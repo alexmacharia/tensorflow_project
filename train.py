@@ -55,4 +55,9 @@ with tf.variable_scope('input'):
 with tf.variable_scope('layer_1'):
     weights = tf.get_variable("weights", shape=[number_of_inputs, layer_1_nodes],
                               initializer=tf.contrib.layers.xavier_initializer())
+    biases = tf.get_variable(name="biases1", shape=[layer_1_nodes],
+                             initializer=tf.zeros_initializer())
+    layer_1_output = tf.nn.relu(tf.matmul(X, weights) + biases)
+
+
 
