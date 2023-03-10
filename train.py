@@ -45,3 +45,14 @@ layer_1_nodes = 50
 layer_2_nodes = 100
 layer_3_nodes = 50
 
+# Define the layers of the neural network
+
+# Input layer
+with tf.variable_scope('input'):
+    X = tf.placeholder(tf.float32, shape=(None, number_of_inputs))
+
+# Layer1
+with tf.variable_scope('layer_1'):
+    weights = tf.get_variable("weights", shape=[number_of_inputs, layer_1_nodes],
+                              initializer=tf.contrib.layers.xavier_initializer())
+
