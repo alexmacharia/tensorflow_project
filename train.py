@@ -76,3 +76,11 @@ with tf.variable_scope('layer_3'):
     biases = tf.get_variable(name="biases3", shape=[layer_3_nodes],
                              initializer=tf.zeros_initializer())
     layer_3_output = tf.nn.relu(tf.matmul(layer_2_output, weights) + biases)
+
+
+# Output layer
+with tf.variable_scope('output'):
+    weights = tf.get_variable("weights4", shape=[layer_3_nodes, number_of_outputs],
+                              initializer=tf.contrib.layers.xavier_initializer())
+    biases = tf.get_variable(name="biases4", shape=[number_of_outputs],
+                             initializer=tf.zeros_initializer())
