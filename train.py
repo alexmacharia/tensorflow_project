@@ -93,3 +93,14 @@ with tf.variable_scope('cost'):
 # Define the optimizer function that will be run
 with tf.variable_scope('train'):
     optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
+
+# Initialize a session to run tensorflow operations
+with tf.Session() as session:
+    # Initialize all variables and layers of the network
+    session.run(tf.global_variables_initializer())
+    # Run the optimizer over and over to train the network
+    for epoch in range(training_epochs):
+        # Feed the training data and do one step of newural network training
+        session.run(optimizer, feed_dict={X: X_scaled_training, Y: Y_scaled_training})
+        print("Training pass: {}".format(epoch))
+    print("Training is complete!")
