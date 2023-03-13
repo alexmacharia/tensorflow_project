@@ -84,3 +84,8 @@ with tf.variable_scope('output'):
                               initializer=tf.contrib.layers.xavier_initializer())
     biases = tf.get_variable(name="biases4", shape=[number_of_outputs],
                              initializer=tf.zeros_initializer())
+
+
+with tf.variable_scope('cost'):
+    Y = tf.placeholder(tf.float32, shape=(None, 1))
+    cost = tf.reduce_mean(tf.squared_difference(prediction, Y))
