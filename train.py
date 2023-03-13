@@ -85,7 +85,11 @@ with tf.variable_scope('output'):
     biases = tf.get_variable(name="biases4", shape=[number_of_outputs],
                              initializer=tf.zeros_initializer())
 
-
+# Define the cost function of the neural network
 with tf.variable_scope('cost'):
     Y = tf.placeholder(tf.float32, shape=(None, 1))
     cost = tf.reduce_mean(tf.squared_difference(prediction, Y))
+
+# Define the optimizer function that will be run
+with tf.variable_scope('train'):
+    optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
